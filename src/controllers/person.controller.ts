@@ -41,7 +41,7 @@ export default class PersonController {
             res.status(200).send({
                 data: rows,
                 totalItems: count,
-                pageCurrent: pageNumber,
+                currentPage: pageNumber,
                 pageSize: size,
                 totalPages: Math.ceil(count / size),
             });
