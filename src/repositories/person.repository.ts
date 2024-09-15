@@ -38,6 +38,20 @@ class PersonRepository implements IPersonRepository {
         return await Person.findByPk(id);
     }
 
+    async update(id: number, updateData: Partial<Person>): Promise<Person> {
+        try {
+            const person = await this.getOne(id);
+
+            if (!person) {
+                throw new Error('Not Found');
+            }
+
+            return await person.update({ ...updateData });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     private buildSearchCondition = (filterParam?: string) => {
         const condition: { [Op.or]?: any[] } = {};
 

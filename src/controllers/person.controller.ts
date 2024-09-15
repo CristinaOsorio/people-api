@@ -55,14 +55,44 @@ export default class PersonController {
 
         try {
             const person = await personRepository.getOne(id);
-
             if (person) return res.status(200).send(person);
 
-            ErrorHandler.handleNotFound(
-                res,
-                `Cannot find person with id: ${id}.`
-            );
+            ErrorHandler.handleNotFound(res, 'Not Found');
         } catch (err) {
+            ErrorHandler.handleGenericError(err, res);
+        }
+    }
+
+    async update(req: Request, res: Response) {
+        const { id } = req.params;
+        const {
+            firstName,
+            lastNamePaternal,
+            lastNameMaternal,
+            address,
+            phone,
+        } = req.body;
+        const personId = Number(id);
+
+        try {
+            const updatedPerson = await personRepository.update(personId, {
+                firstName,
+                lastNamePaternal,
+                lastNameMaternal,
+                address,
+                phone,
+            });
+
+            res.status(200).json(updatedPerson);
+        } catch (err: any) {
+            if (err instanceof ValidationError) {
+                return ErrorHandler.handleValidationError(err, res);
+            }
+
+            if (err.message === 'Not Found') {
+                return ErrorHandler.handleNotFound(res, err.message);
+            }
+
             ErrorHandler.handleGenericError(err, res);
         }
     }

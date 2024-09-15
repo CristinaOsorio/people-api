@@ -15,6 +15,8 @@ class PersonRoutes {
         this.router.get('/', this.controller.findAll);
 
         this.router.get('/:id', this.controller.findOne);
+
+        this.router.put('/:id', this.controller.update);
     }
 }
 

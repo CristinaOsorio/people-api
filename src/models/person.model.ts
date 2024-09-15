@@ -18,10 +18,10 @@ export default class Person extends Model {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'El nombre es un campo obligatorio.',
+                msg: 'First name is a required field.',
             },
             isAlpha: {
-                msg: 'El nombre solo debe contener letras.',
+                msg: 'First name can only contain letters.',
             },
         },
     })
@@ -32,14 +32,14 @@ export default class Person extends Model {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'El apellido paterno es un campo obligatorio.',
+                msg: 'Paternal last name is a required field.',
             },
             isAlpha: {
-                msg: 'El apellido paterno solo debe contener letras.',
+                msg: 'Paternal last name can only contain letters.',
             },
             len: {
                 args: [3, 60],
-                msg: 'El apellido paterno debe tener entre 3 y 60 caracteres.',
+                msg: 'Paternal last name must be between 3 and 60 characters long.',
             },
         },
     })
@@ -50,14 +50,14 @@ export default class Person extends Model {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'El apellido materno es un campo obligatorio.',
+                msg: 'Maternal last name is a required field.',
             },
             isAlpha: {
-                msg: 'El apellido materno solo debe contener letras.',
+                msg: 'Maternal last name can only contain letters.',
             },
             len: {
                 args: [3, 60],
-                msg: 'El apellido materno debe tener entre 3 y 60 caracteres.',
+                msg: 'Maternal last name must be between 3 and 60 characters long.',
             },
         },
     })
@@ -68,11 +68,11 @@ export default class Person extends Model {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'La dirección es un campo obligatorio.',
+                msg: 'Address is a required field.',
             },
             len: {
                 args: [10, 100],
-                msg: 'La dirección debe tener entre 10 y 100 caracteres.',
+                msg: 'Address must be between 10 and 100 characters long.',
             },
         },
     })
@@ -84,14 +84,14 @@ export default class Person extends Model {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'El teléfono es un campo obligatorio.',
+                msg: 'Phone number is a required field.',
             },
             isNumeric: {
-                msg: 'El teléfono solo debe contener números.',
+                msg: 'Phone number can only contain numbers.',
             },
             len: {
                 args: [10, 10],
-                msg: 'El teléfono debe tener exactamente 10 dígitos.',
+                msg: 'Phone number must be exactly 10 digits long.',
             },
         },
     })

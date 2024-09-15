@@ -8,4 +8,5 @@ export interface IPersonRepository {
         searchParam?: string
     ): Promise<{ rows: Person[]; count: number }>;
     getOne(id: number): Promise<Person | null>;
+    update(id: number, person: Person): Promise<Person>;
 }

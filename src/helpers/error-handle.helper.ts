@@ -10,20 +10,19 @@ class ErrorHandler {
         }));
 
         res.status(400).send({
-            message: 'Errores de validación',
             errors: validationErrors,
         });
     }
 
     public static handleGenericError(err: any, res: Response) {
         res.status(500).send({
-            message: 'Ocurrió un error inesperado',
+            message: 'An unexpected error occurred',
         });
     }
 
     static handleNotFound(res: Response, msg?: string): void {
         res.status(404).json({
-            message: msg || 'Recurso no encontrado',
+            message: msg || 'Not found',
         });
     }
 }
