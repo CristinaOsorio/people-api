@@ -34,6 +34,10 @@ class PersonRepository implements IPersonRepository {
         }
     }
 
+    async getOne(id: number): Promise<Person | null> {
+        return await Person.findByPk(id);
+    }
+
     private buildSearchCondition = (filterParam?: string) => {
         const condition: { [Op.or]?: any[] } = {};
 

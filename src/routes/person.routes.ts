@@ -13,6 +13,8 @@ class PersonRoutes {
         this.router.post('/', this.controller.create);
 
         this.router.get('/', this.controller.findAll);
+
+        this.router.get('/:id', this.controller.findOne);
     }
 }
 

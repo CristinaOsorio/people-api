@@ -7,4 +7,5 @@ export interface IPersonRepository {
         limit: number,
         searchParam?: string
     ): Promise<{ rows: Person[]; count: number }>;
+    getOne(id: number): Promise<Person | null>;
 }

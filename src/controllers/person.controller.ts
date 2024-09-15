@@ -49,4 +49,21 @@ export default class PersonController {
             ErrorHandler.handleGenericError(err, res);
         }
     }
+
+    async findOne(req: Request, res: Response) {
+        const id: number = parseInt(req.params.id);
+
+        try {
+            const person = await personRepository.getOne(id);
+
+            if (person) return res.status(200).send(person);
+
+            ErrorHandler.handleNotFound(
+                res,
+                `Cannot find person with id: ${id}.`
+            );
+        } catch (err) {
+            ErrorHandler.handleGenericError(err, res);
+        }
+    }
 }

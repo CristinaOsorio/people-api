@@ -20,6 +20,12 @@ class ErrorHandler {
             message: 'Ocurrió un error inesperado',
         });
     }
+
+    static handleNotFound(res: Response, msg?: string): void {
+        res.status(404).json({
+            message: msg || 'Recurso no encontrado',
+        });
+    }
 }
 
 export default ErrorHandler;
