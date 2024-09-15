@@ -11,6 +11,8 @@ class PersonRoutes {
 
     initializeRoutes() {
         this.router.post('/', this.controller.create);
+
+        this.router.get('/', this.controller.findAll);
     }
 }
 

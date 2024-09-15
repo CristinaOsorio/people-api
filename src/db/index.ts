@@ -17,7 +17,7 @@ class Database {
             host: config.HOST,
             port: config.PORT,
             dialect: dialect,
-
+            logging: console.log,
             pool: {
                 max: config.pool.max,
                 min: config.pool.min,
