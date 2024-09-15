@@ -51,6 +51,19 @@ class PersonRepository implements IPersonRepository {
             throw error;
         }
     }
+    async delete(id: number): Promise<void> {
+        try {
+            const person = await this.getOne(id);
+
+            if (!person) {
+                throw new Error('Not Found');
+            }
+
+            await person.destroy();
+        } catch (error) {
+            throw error;
+        }
+    }
 
     private buildSearchCondition = (filterParam?: string) => {
         const condition: { [Op.or]?: any[] } = {};

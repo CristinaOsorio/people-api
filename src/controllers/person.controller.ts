@@ -96,4 +96,20 @@ export default class PersonController {
             ErrorHandler.handleGenericError(err, res);
         }
     }
+
+    async delete(req: Request, res: Response) {
+        const id: number = parseInt(req.params.id);
+
+        try {
+            await personRepository.delete(id);
+
+            res.status(204).send();
+        } catch (err: any) {
+            if (err.message === 'Not Found') {
+                return ErrorHandler.handleNotFound(res, err.message);
+            }
+
+            ErrorHandler.handleGenericError(err, res);
+        }
+    }
 }
