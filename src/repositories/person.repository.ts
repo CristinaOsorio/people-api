@@ -25,6 +25,7 @@ class PersonRepository implements IPersonRepository {
                 where: condition,
                 limit: limit,
                 offset: (page - 1) * limit,
+                order: [['createdAt', 'DESC']],
             });
 
             return { rows, count };
