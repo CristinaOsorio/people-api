@@ -52,13 +52,31 @@ Este proyecto es una aplicación de gestión de personas que permite realizar op
     cd people-api
     ```
 
-3. **Instalar las dependencias:**
+3. **Instalar `nvm` (Node Version Manager) [Opcional]:**
+
+    Si prefieres usar `nvm` para gestionar versiones de Node.js, sigue las instrucciones en la [documentación oficial de nvm](https://github.com/nvm-sh/nvm#installing-and-updating) para instalarlo.
+
+    Luego, instala la versión recomendada de Node.js especificada en el archivo `.nvmrc`:
+
+    ```bash
+    nvm install
+    ```
+
+    Asegúrate de usar la versión correcta con:
+
+    ```bash
+    nvm use
+    ```
+
+    **Nota:** Si no utilizas `nvm`, asegúrate de tener la versión recomendada de Node.js instalada. La versión requerida está especificada en el archivo `.nvmrc`.
+
+4. **Instalar las dependencias:**
 
     ```bash
     npm install
     ```
 
-4. **Configurar la base de datos:**
+5. **Configurar la base de datos:**
 
     Crear una base de datos en MySQL con el nombre `tu-base-de-datos`
 
@@ -76,7 +94,7 @@ Este proyecto es una aplicación de gestión de personas que permite realizar op
     DB_PORT=3306
     ```
 
-5. **Iniciar el servidor:**
+6. **Iniciar el servidor:**
 
     ```bash
     npm run dev
