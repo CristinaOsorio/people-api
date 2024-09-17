@@ -1,4 +1,5 @@
 import { Model, Table, Column, DataType } from 'sequelize-typescript';
+import { ALPHA_REGEX, PHONE_NUMBER_REGEX } from '../constants/regex.constant';
 
 @Table({
     timestamps: true,
@@ -20,8 +21,9 @@ export default class Person extends Model {
             notNull: {
                 msg: 'First name is a required field.',
             },
-            isAlpha: {
-                msg: 'First name can only contain letters.',
+            is: {
+                args: ALPHA_REGEX,
+                msg: 'First name can only contain letters, spaces, apostrophes, and hyphens, and must be correctly formatted.',
             },
         },
     })
@@ -34,11 +36,12 @@ export default class Person extends Model {
             notNull: {
                 msg: 'Paternal last name is a required field.',
             },
-            isAlpha: {
-                msg: 'Paternal last name can only contain letters.',
+            is: {
+                args: ALPHA_REGEX,
+                msg: 'Paternal last name can only contain letters, spaces, apostrophes, and hyphens, and must be correctly formatted.',
             },
             len: {
-                args: [3, 60],
+                args: [1, 60],
                 msg: 'Paternal last name must be between 3 and 60 characters long.',
             },
         },
@@ -52,12 +55,13 @@ export default class Person extends Model {
             notNull: {
                 msg: 'Maternal last name is a required field.',
             },
-            isAlpha: {
-                msg: 'Maternal last name can only contain letters.',
+            is: {
+                args: ALPHA_REGEX,
+                msg: 'Maternal last name can only contain letters, spaces, apostrophes, and hyphens, and must be correctly formatted.',
             },
             len: {
-                args: [3, 60],
-                msg: 'Maternal last name must be between 3 and 60 characters long.',
+                args: [1, 60],
+                msg: 'Maternal last name must be between 1 and 60 characters long.',
             },
         },
     })
@@ -71,8 +75,8 @@ export default class Person extends Model {
                 msg: 'Address is a required field.',
             },
             len: {
-                args: [10, 100],
-                msg: 'Address must be between 10 and 100 characters long.',
+                args: [1, 100],
+                msg: 'Address must be between 1 and 100 characters long.',
             },
         },
     })
@@ -86,12 +90,9 @@ export default class Person extends Model {
             notNull: {
                 msg: 'Phone number is a required field.',
             },
-            isNumeric: {
-                msg: 'Phone number can only contain numbers.',
-            },
-            len: {
-                args: [10, 10],
-                msg: 'Phone number must be exactly 10 digits long.',
+            is: {
+                args: PHONE_NUMBER_REGEX,
+                msg: 'Phone number must contain exactly 10 numerical digits.',
             },
         },
     })
